@@ -22,10 +22,16 @@ cask "pong" do
 
   # Pong isn't code-signed or notarized yet (no paid Apple Developer account) — a
   # plain .dmg install hits Gatekeeper's "damaged" warning on first launch. Strip
-  # the quarantine flag here so a `brew install` just works.
+  # the quarantine flag here so a `brew install` just works. Then launch it: Pong
+  # is tray-only (no Dock icon, no window), so without this, "brew install"
+  # finishing gives no visible sign anything happened at all — same silence as a
+  # manual install, just via a different path.
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/Pong.app"],
+                   sudo: false
+    system_command "/usr/bin/open",
+                   args: ["-a", "#{appdir}/Pong.app"],
                    sudo: false
   end
 
@@ -46,5 +52,9 @@ cask "pong" do
     Pong is not code-signed or notarized yet — this Cask strips the quarantine
     flag automatically so it launches without a Gatekeeper warning. See
     https://github.com/neochaotic/pong#install for details.
+
+    Pong just launched itself and is now running — but it's a menu-bar-only
+    app (no Dock icon, no window), so there's nothing on screen to confirm
+    that. Look for its icon in the menu bar at the top-right of your screen.
   EOS
 end
