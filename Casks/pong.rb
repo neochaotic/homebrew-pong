@@ -1,9 +1,9 @@
 cask "pong" do
   arch arm: "aarch64", intel: "x64"
 
-  version "0.0.1"
-  sha256 arm:   "3f3fe89949de643a00bb83df5707151bb99306e9e398f8dba0c1a4061ae0c7c7",
-         intel: "ceb84e7db1057c7238fe348715d3425e0efe0eef39712d2cca6f29596459d772"
+  version "0.0.2"
+  sha256 arm:   "0871a490d6057ae3c915bc105875ec5b5c8df80bf1120c9ace8d0b07eeb7b408",
+         intel: "af0abc354c14a2567a4cda5701d9e92f01edfbbb24dfa0cbfb16bc602c4006d6"
 
   url "https://github.com/neochaotic/pong/releases/download/v#{version}/Pong_#{version}_#{arch}.dmg"
   name "Pong"
